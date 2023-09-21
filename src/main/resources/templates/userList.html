@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt"
-	  xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
 
   <head>
 
@@ -13,7 +11,7 @@
 
   <body>
   
-    <table>	
+    <table border="1px">	
 		<thead>		
 			<tr>			
 				<th>Id</th>
@@ -25,8 +23,8 @@
 				<th>Sexo</th>
 			</tr>		
 		</thead>
-		<tbody>
-			<tr th:each="user: ${ userList }">
+		<tbody >
+			<tr th:each="user: ${ users }">
 				<td th:text="${ user.id }"></td>
 				<td th:text="${ user.firstName }"></td>
 				<td th:text="${ user.lastName }"></td>

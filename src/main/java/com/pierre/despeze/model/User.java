@@ -106,4 +106,10 @@ public class User implements Serializable{
 		User other = (User) obj;
 		return Objects.equals(email, other.email) && Objects.equals(id, other.id);
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", password=" + password + ", birthDate=" + birthDate + ", gender=" + gender + "]";
+	}
 }

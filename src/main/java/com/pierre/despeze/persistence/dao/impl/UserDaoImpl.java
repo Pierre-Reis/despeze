@@ -3,6 +3,8 @@ package com.pierre.despeze.persistence.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -15,6 +17,8 @@ import com.pierre.despeze.persistence.dao.mapping.UserRowMapper;
 
 @Service
 public class UserDaoImpl implements UserDao{
+	
+	protected static final Log log = LogFactory.getLog( UserDaoImpl.class );
 
 	@Autowired
     private JdbcTemplate jdbc;
@@ -22,26 +26,30 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public List<User> getUserList() {
 		
-		String query = "SELECT * FROM DESPEZE.REG_USERS";
+		String query = "SELECT * FROM REG_USERS";
 		
 		List<User> userList = new ArrayList<>();
 		
 		try {
 			
-			userList.addAll(
-					jdbc.query(query, new UserRowMapper())
-			);
+			log.info( "Query: " + query );
+			
+			userList.addAll( jdbc.query(query, new UserRowMapper())	);
 			
 		} catch( EmptyResultDataAccessException error) {
 			
-			return userList;
+			throw new InternalErrorException(error);
 		
 		} catch( Exception error) {
 			
+			String message = "Não foi possível carregar a lista de usuários";
+			
+			log.error( message, error );
+			
 			throw new InternalErrorException(error);
 		}
-		
-		return null;
+
+		return userList;
 	}
 
 }
