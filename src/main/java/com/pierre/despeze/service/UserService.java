@@ -9,5 +9,7 @@ import com.pierre.despeze.model.User;
 @Service
 public interface UserService {
 
+	public User findByEmail(String email);
+	
 	public List<User> getUserList();
 }

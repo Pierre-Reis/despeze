@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    
+	    <title>Login - Despeze</title>
+	    
+	    <link rel="stylesheet" th:href="@{/css/login.css}"/>
+	    
+	</head>
+	
+	<body>
+		
+	    <div class="main-login">
+			
+	    	<div class="left-login">
+				
+				<h1>Entre para o Despeze <br> e deixe sua vida financeira mais leve</h1>
+				<img src="/images/login-finance-leaders-animate.svg" class="left-login-img" alt="imagem animada login">
+				
+			</div>
+			
+			<div class="right-login">
+				
+			   <div class="card-login">			    	
+			    	
+			    	<h1>Login</h1>
+				    
+				    <form th:action="@{/authenticate}" method="post">			        
+				        
+				        <div class="textfield">						
+							<label for="email">E-mail</label>
+					        <input type="email" id="email" placeholder="exemplo@despeze.com" name="email" required>
+					    </div>				    
+					    
+					    <div class="textfield">						
+					        <label for="password">Senha</label>
+					        <input type="password" id="password" placeholder="*******" name="password" required>
+						</div>
+						
+						<button class="btn-Login" type="submit">Entrar</button>
+				        
+				    </form>
+			    
+			    </div>
+			    
+			</div>
+			    
+	    </div>
+	    
+	</body>
+
+</html>
