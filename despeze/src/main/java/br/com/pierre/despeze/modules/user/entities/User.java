@@ -28,7 +28,6 @@ public class User {
     @Size(min = 1, max = 50)
     private String lastname;
 
-    @NotBlank
     @Past
     private LocalDate birthdate;
 
