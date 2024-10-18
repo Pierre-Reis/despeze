@@ -1,5 +1,6 @@
 package br.com.pierre.despeze.modules.user.services;
 
+import br.com.pierre.despeze.exceptions.runtime.UserFoundException;
 import br.com.pierre.despeze.modules.user.entities.User;
 import br.com.pierre.despeze.modules.user.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +22,12 @@ public class UserService {
                 .findByEmail(user.getEmail())
                 .ifPresent(
                         (userExists) -> {
-                            throw new RuntimeException("E-mail já cadastrado");
+                            throw new UserFoundException();
                         });
 
         var encodedPassword = this.passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
 
-        return userRepository.save(user);
+        return this.userRepository.save(user);
     }
 }
