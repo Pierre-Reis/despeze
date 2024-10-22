@@ -1,6 +1,6 @@
 package br.com.pierre.despeze.exceptions.controllers;
 
-import br.com.pierre.despeze.exceptions.dtos.ErrorMessageDTO;
+import br.com.pierre.despeze.exceptions.dto.ErrorMessageDTO;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;

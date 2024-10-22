@@ -1,4 +1,4 @@
-package br.com.pierre.despeze.exceptions.dtos;
+package br.com.pierre.despeze.exceptions.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
