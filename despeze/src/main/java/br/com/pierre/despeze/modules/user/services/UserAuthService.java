@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Arrays;
 
 @Service
 public class UserAuthService {
@@ -40,8 +41,11 @@ public class UserAuthService {
 
         Algorithm algorithm = Algorithm.HMAC256(secret);
 
+        System.out.println("Id do usuário vindo do auth service: " + user.getId().toString());
+
         return JWT.create().withIssuer("despeze")
                 .withExpiresAt(Instant.now().plus(Duration.ofHours(2)))
+                .withClaim("roles", Arrays.asList("user"))
                 .withSubject(user.getId().toString())
                 .sign(algorithm);
     }

@@ -1,6 +1,6 @@
 package br.com.pierre.despeze.configurations.security;
 
-import br.com.pierre.despeze.providers.JWTProvider;
+import br.com.pierre.despeze.configurations.providers.JWTProvider;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,7 +14,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.Collections;
 
-@SuppressWarnings("NullableProblems")
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
 
@@ -31,10 +30,14 @@ public class SecurityFilter extends OncePerRequestFilter {
         if(header != null){
             var subjectToken = this.jwtProvider.validateToken(header);
 
-            if(subjectToken.isEmpty()){
+            if(subjectToken == null){
                 response.setStatus((HttpServletResponse.SC_UNAUTHORIZED));
                 return;
             }
+
+            request.setAttribute("user_id", subjectToken.getSubject());
+
+            System.out.println("Subjetc token: " + subjectToken.getSubject());
 
             UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
                     subjectToken,

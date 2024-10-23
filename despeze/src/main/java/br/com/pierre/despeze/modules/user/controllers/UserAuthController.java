@@ -2,7 +2,6 @@ package br.com.pierre.despeze.modules.user.controllers;
 
 import br.com.pierre.despeze.modules.user.dto.UserAuthDTO;
 import br.com.pierre.despeze.modules.user.services.UserAuthService;
-import br.com.pierre.despeze.providers.JWTProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
