@@ -37,8 +37,6 @@ public class SecurityFilter extends OncePerRequestFilter {
 
             request.setAttribute("user_id", subjectToken.getSubject());
 
-            System.out.println("Subjetc token: " + subjectToken.getSubject());
-
             UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
                     subjectToken,
                     null,

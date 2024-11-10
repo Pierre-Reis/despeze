@@ -30,12 +30,11 @@ public class BankAccountController {
             var userId = UUID.fromString(idFromRequest);
 
             var bankAccount =
-                    BankAccount.builder()
-                        .userId(userId)
-                        .name(bankAccountDTO.name())
-                        .creditLimit(bankAccountDTO.creditLimit())
-                        .dueDay(bankAccountDTO.dueDay())
-                            .build();
+                BankAccount.builder()
+                    .userId(userId)
+                    .name(bankAccountDTO.name())
+                    .creditLimit(bankAccountDTO.creditLimit())
+                    .dueDay(bankAccountDTO.dueDay()).build();
 
             var create = this.bankAccountService.create(bankAccount);
 
